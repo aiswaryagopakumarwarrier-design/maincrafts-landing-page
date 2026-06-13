@@ -358,3 +358,21 @@ body{
   }
 
 }
+
+#submissionList{
+  margin-top:30px;
+}
+
+#submissionList .card{
+  text-align:left;
+}
+
+#submissionList h3{
+  color:#0f172a;
+  margin-bottom:10px;
+}
+
+#submissionList p{
+  margin-bottom:8px;
+  line-height:1.6;
+}
