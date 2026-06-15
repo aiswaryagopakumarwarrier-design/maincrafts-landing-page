@@ -376,3 +376,20 @@ body{
   margin-bottom:8px;
   line-height:1.6;
 }
+/* MOBILE VIEW FOR SUBMISSIONS PAGE */
+
+@media(max-width:768px){
+
+  #submissionList{
+    grid-template-columns:1fr;
+  }
+
+  #submissionList .card{
+    padding:20px;
+  }
+
+  #submissionList h3{
+    font-size:20px;
+  }
+
+}
