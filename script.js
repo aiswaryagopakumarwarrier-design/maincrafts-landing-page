@@ -107,3 +107,217 @@ if (submissionList) {
   }
 
 }
+// TASK MANAGER DASHBOARD
+
+const taskInput =
+document.getElementById("taskInput");
+
+const addTaskBtn =
+document.getElementById("addTaskBtn");
+
+if(taskInput && addTaskBtn){
+
+  const taskList =
+  document.getElementById("taskList");
+
+  const searchInput =
+  document.getElementById("searchInput");
+
+  const totalTasks =
+  document.getElementById("totalTasks");
+
+  const completedTasks =
+  document.getElementById("completedTasks");
+
+  let tasks =
+  JSON.parse(
+    localStorage.getItem("tasks")
+  ) || [];
+
+  function saveTasks(){
+
+    localStorage.setItem(
+      "tasks",
+      JSON.stringify(tasks)
+    );
+
+  }
+
+  function updateStats(){
+
+    totalTasks.textContent =
+    tasks.length;
+
+    completedTasks.textContent =
+    tasks.filter(
+      task => task.completed
+    ).length;
+
+  }
+
+  function displayTasks(
+    searchTerm = ""
+  ){
+
+    taskList.innerHTML = "";
+
+    const filteredTasks =
+    tasks.filter(task =>
+      task.text
+      .toLowerCase()
+      .includes(
+        searchTerm.toLowerCase()
+      )
+    );
+
+    filteredTasks.forEach((task) => {
+
+      const originalIndex =
+      tasks.indexOf(task);
+
+      const taskCard =
+      document.createElement("div");
+
+      taskCard.classList.add(
+        "task-card"
+      );
+
+      if(task.completed){
+
+        taskCard.classList.add(
+          "completed"
+        );
+
+      }
+
+      taskCard.innerHTML = `
+        <span>${task.text}</span>
+
+        <div class="task-actions">
+
+          <button
+          class="complete-btn"
+          onclick="toggleComplete(${originalIndex})">
+          ✓
+          </button>
+
+          <button
+          class="edit-btn"
+          onclick="editTask(${originalIndex})">
+          Edit
+          </button>
+
+          <button
+          class="delete-btn"
+          onclick="deleteTask(${originalIndex})">
+          Delete
+          </button>
+
+        </div>
+      `;
+
+      taskList.appendChild(
+        taskCard
+      );
+
+    });
+
+    updateStats();
+
+  }
+
+  addTaskBtn.addEventListener(
+  "click", () => {
+
+    const task =
+    taskInput.value.trim();
+
+    if(task === ""){
+
+      alert(
+        "Please enter a task"
+      );
+
+      return;
+
+    }
+
+    tasks.push({
+      text:task,
+      completed:false
+    });
+
+    saveTasks();
+
+    displayTasks();
+
+    taskInput.value = "";
+
+  });
+
+  window.toggleComplete =
+  function(index){
+
+    tasks[index].completed =
+    !tasks[index].completed;
+
+    saveTasks();
+
+    displayTasks(
+      searchInput.value
+    );
+
+  }
+
+  window.deleteTask =
+  function(index){
+
+    tasks.splice(index,1);
+
+    saveTasks();
+
+    displayTasks(
+      searchInput.value
+    );
+
+  }
+
+  window.editTask =
+  function(index){
+
+    const updatedTask =
+    prompt(
+      "Edit Task",
+      tasks[index].text
+    );
+
+    if(
+      updatedTask &&
+      updatedTask.trim() !== ""
+    ){
+
+      tasks[index].text =
+      updatedTask.trim();
+
+      saveTasks();
+
+      displayTasks(
+        searchInput.value
+      );
+
+    }
+
+  }
+
+  searchInput.addEventListener(
+  "keyup", () => {
+
+    displayTasks(
+      searchInput.value
+    );
+
+  });
+
+  displayTasks();
+
+}

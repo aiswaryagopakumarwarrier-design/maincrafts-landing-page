@@ -3,24 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Submissions - MainCrafts</title>
 
-<!-- Google Fonts -->
+<title>Task Manager Dashboard - MainCrafts</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Font Awesome -->
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-<!-- CSS -->
 <link rel="stylesheet" href="style.css">
-</head>
 
+</head>
 <body>
 
 <!-- HEADER -->
+
 <header class="header">
+
 <nav class="navbar">
 
 <div class="logo">
@@ -29,52 +30,114 @@ MainCrafts
 </div>
 
 <ul class="nav-links">
+
 <li><a href="index.html">Home</a></li>
+
 <li><a href="about.html">About</a></li>
+
 <li><a href="contact.html">Contact</a></li>
-<li><a href="submissions.html">Submissions</a></li>
- <li><a href="dashboard.html">Dashboard</a></li>
+
+<li><a href="dashboard.html">Dashboard</a></li>
+
 </ul>
 
-<!-- MOBILE MENU -->
 <div class="menu-btn" id="menu-btn">
 <i class="fa-solid fa-bars"></i>
 </div>
 
 </nav>
+
 </header>
 
-<!-- PAGE BANNER -->
-<section class="page-banner">
-<h1>Form Submissions</h1>
-<p>View all saved contact form submissions.</p>
-</section>
+<!-- DASHBOARD -->
 
-<!-- SUBMISSIONS SECTION -->
-<section class="features">
+<section class="dashboard">
+
+<h1>Task Manager Dashboard</h1>
+
+<p style="text-align:center;margin:15px 0 30px;">
+Manage your daily tasks efficiently with MainCrafts.
+</p>
+
+<!-- TASK INPUT -->
+
+<div class="task-form">
+
+<input
+type="text"
+id="taskInput"
+placeholder="Enter a task">
+
+<button id="addTaskBtn">
+Add Task
+</button>
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search tasks">
+
+</div>
+
+<!-- STATISTICS -->
+
+<div class="stats">
+
+<div class="stat-card">
+
+<h3>Total Tasks</h3>
+
+<p id="totalTasks">0</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Completed Tasks</h3>
+
+<p id="completedTasks">0</p>
+
+</div>
+
+</div>
+
+<!-- TASK LIST -->
 
 <div
-id="submissionList"
-class="feature-container">
+id="taskList"
+class="task-list">
 
 </div>
 
 </section>
 
 <!-- FOOTER -->
+
 <footer class="footer">
 
 <p>© 2026 MainCrafts. All Rights Reserved.</p>
 
 <div class="footer-links">
+
 <a href="#">Privacy Policy</a>
+
 <a href="#">Terms</a>
+
 <a href="contact.html">Contact</a>
+
+
 </div>
 
 </footer>
 
 <!-- JAVASCRIPT -->
+
 <script src="script.js"></script>
 
 </body>
